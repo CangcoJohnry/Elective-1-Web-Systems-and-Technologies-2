@@ -39,8 +39,8 @@
                     <td class="text-center">
                         @if($student->picture)
                             <img src="{{ asset('storage/' . $student->picture) }}" 
-                                 width="80" 
-                                 height="80" 
+                                 width="60" 
+                                 height="60" 
                                  style="object-fit: cover;" 
                                  class="border shadow-sm">
                         @else

@@ -21,13 +21,14 @@ class StudentController extends Controller
         }
 
         $students = $query->get()->map(function ($student) {
-            $student->qr = QrCode::size(100)->generate(json_encode([
-                'ID' => $student->student_number,
-                'Name' => $student->full_name,
-                'Course' => $student->course,
-                'Email' => $student->email,
-                'DOB' => $student->dob,
-            ]));
+            $qrContent = "Student Info:\n" .
+                         "ID: {$student->student_number}\n" .
+                         "Name: {$student->full_name}\n" .
+                         "Course: {$student->course}\n" .
+                         "Email: {$student->email}\n" .
+                         "DOB: {$student->dob}";
+
+            $student->qr = QrCode::size(100)->generate($qrContent);
             return $student;
         });
 
